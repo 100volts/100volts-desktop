@@ -1,0 +1,43 @@
+# Dependency directories
+node_modules/
+
+# Environment variables file
+.env
+
+# Logs
+logs/
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Optional: Ignore local configuration files
+config/local.json
+# Ignore node_modules directory
+/node_modules
+
+# Ignore npm's cache directory
+.npm
+
+# Ignore environment-specific files
+.env
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
