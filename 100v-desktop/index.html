@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Electron Name Display</title>
+  </head>
+  <body>
+    <html>
+      <div class="el-meter">
+        <div class="voltage">
+          <h1>Voltage</h1>
+          V1: <a id="voltagell1"></a> V
+          <div>V2: <a id="voltagell2"></a> V</div>
+          V3: <a id="voltagell3"></a> V
+        </div>
+        <div class="current">
+          <h1>Current</h1>
+          <div>
+            L1: <a class="currentl" id="currentl1"></a> A
+          </div>
+          <div>
+            L2: <a class="currentl" id="currentl2"></a> A
+          </div>
+          <div>
+            L3: <a class="currentl" id="currentl3"></a> A
+          </div>
+        </div>
+        <div class="active-power">
+          <h1>Active Power</h1>
+          <div>L1: <a id="activePowerL1"></a> kW</div>
+          <div>L2: <a id="activePowerL2"></a> kW</div>
+          <div>L3: <a id="activePowerL3"></a> kW</div>
+        </div>
+      </div>
+    </html>
+
+    <div id="name-display"></div>
+    <script src="renders/renderer.js"></script>
+  </body>
+</html>
