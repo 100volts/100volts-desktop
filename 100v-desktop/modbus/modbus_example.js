@@ -1,4 +1,3 @@
-// create an empty modbus client
 const ModbusRTU = require("modbus-serial");
 const client = new ModbusRTU();
 

@@ -1,6 +1,17 @@
+@font-face {
+  font-family: "OpenSans";
+  src: url("resources/font/open_sans/OpenSans-VariableFont_wdth,wght.ttf")
+    format("truetype");
+}
+
+div {
+  font-family: OpenSans;
+}
+
 html,
 object,
 body {
   height: 100%;
   margin: 0;
+  font-family: OpenSans;
 }
