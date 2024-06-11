@@ -1,14 +1,18 @@
 {
   "name": "100v-desktop",
   "version": "1.0.0",
-  "description": "A desktop all for factory managament",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
+  "description": "",
   "devDependencies": {
-    "electron": "^31.0.0"
+    "electron": "^30.0.1"
+  },
+  "dependencies": {
+    "modbus-serial": "^8.0.16"
   }
 }
