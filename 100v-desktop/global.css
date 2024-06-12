@@ -16,6 +16,10 @@ body {
   font-family: OpenSans;
 }
 
+.side-bar {
+  width: 50%;
+}
+
 /*
 html,
 object,
