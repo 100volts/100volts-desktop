@@ -16,7 +16,6 @@ window.hund_volts.elmeter = (function() {
 })();
 
 (function initElMeter() {
-    // Update HTML with the name
     document.getElementById("currentl1").textContent = hund_volts.elmeter.currentl1;
     document.getElementById("currentl2").textContent = hund_volts.elmeter.currentl2;
     document.getElementById("currentl3").textContent = hund_volts.elmeter.currentl3;

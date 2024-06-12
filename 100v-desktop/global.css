@@ -11,7 +11,17 @@ div {
 html,
 object,
 body {
+  height: 100vh;
+  margin: 0;
+  font-family: OpenSans;
+}
+
+/*
+html,
+object,
+body {
   height: 100%;
   margin: 0;
   font-family: OpenSans;
 }
+*/
