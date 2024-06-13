@@ -1,0 +1,14 @@
+.meter {
+  border: 2px solid #ffffff;
+  background-color: #cfe1ca;
+  border-radius: 12px;
+  padding: 10px 0px;
+}
+
+.meterL {
+  padding: 2px 10px;
+}
+
+.el-meter {
+  height: 100vp;
+}
