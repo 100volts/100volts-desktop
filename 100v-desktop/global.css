@@ -8,17 +8,50 @@ div {
   font-family: OpenSans;
 }
 
-html,
-object,
-body {
-  height: 100vh;
+.side-bar,
+.el-mers {
+  height: 80vh;
   margin: 0;
   font-family: OpenSans;
 }
 
+.side-bar-button {
+  background-color: transparent;
+  font-family: OpenSans;
+  font-size: 16px;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.side-bar-button:hover {
+  background-color: #333;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.click-animated-button:active {
+  animation: click 0.2s ease;
+}
+
+@keyframes click {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/*
 .side-bar {
   width: 50%;
-}
+   border-right: 2px solid black;
+}*/
 
 /*
 html,
