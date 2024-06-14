@@ -2,26 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/logo.svg"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <link rel="stylesheet" href="global.css" />
-    <title>Electron Name Display</title>
+    <title>100 Volts</title>
   </head>
   <body>
-    <script type="module" src=""></script>
-    <div class="items">
-      <object
-        class="side-bar"
-        type="text/html"
-        data="component/side-bar/side-bar.html"
-      ></object>
-      <object
-        class="el-mers"
-        type="text/html"
-        data="component/electric-meter/electric-meter.html"
-      ></object>
-    </div>
+    <nav class="nav">
+      <a href="/" class="nav__link" data-link>
+        Dashboard
+      </a>
+      <a href="/elmeters" class="nav__link" data-link>
+        El meters
+      </a>
+      <a href="/profile" class="nav__link" data-link>
+        Profile
+      </a>
+    </nav>
+    <script
+      type="module"
+      src="/static/js/index.js"
+    ></script>
   </body>
 </html>

@@ -29,3 +29,17 @@ app.whenReady().then(() => {
 app.on("window-all-closed", function () {
   if (process.platform !== "darwin") app.quit();
 });
+
+const express= require("express");
+
+const appE=express();
+
+appE.get("/*",(req,res)=>{
+    res.sendFile(path.resolve("index.html"))
+})
+
+appE.get("/elmeters",(req,res)=>{
+  res.sendFile(path.resolve("component/electric-meter","electric-meter.html"))
+})
+
+appE.listen(process.env.PORT || 8081 ,()=> console.log("server running"))
