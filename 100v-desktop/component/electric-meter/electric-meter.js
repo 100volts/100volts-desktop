@@ -34,4 +34,9 @@ window.hund_volts.elmeter = (function() {
     }
     
     document.getElementById("read-meter").onclick = readMeter;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const selectElement = document.getElementById("fruits");
+        
+    });
 })();
