@@ -29,7 +29,7 @@ function displayElMeter(elMeters) {
   elMeters.forEach(elMeter => {
       const meterDiv= document.createElement('div');
       const meterDivName= document.createElement('h1');
-      meterDivName.innerHTML=`${elMeter.name}`
+      meterDivName.innerHTML=`${elMeter.name} Id:${elMeter.id}`
       meterDiv.className = 'meters';
       meterDiv.id = elMeter.id;
       meterDiv.innerHTML = `
@@ -114,6 +114,7 @@ function displayElMeter(elMeters) {
       modal.style.display = "none"; // Close the modal after submission
       displayElMeter([{id:userId,name:name}])
     }
+    modal.style.display = "none";
 
     document.getElementById("read-meter").onclick = readMeter;
     document.getElementById("create-meter").onclick = createMeter;
