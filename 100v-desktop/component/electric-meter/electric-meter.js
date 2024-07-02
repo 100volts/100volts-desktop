@@ -43,5 +43,17 @@ window.hund_volts.elmeter = (function() {
       alert("Metters have been read");
       document.getElementById("output").innerText = "Metters have been read!";
     }
+
+    function createMeter(){
+      let div = document.createElement('div');
+      div.id = 'content';
+      div.innerHTML = '<p>CreateElement example</p>';
+      document.body.appendChild(div);
+
+      alert("Metters have been created");
+      document.getElementById("output").innerText = "Metters have been created!";
+    }
+
     document.getElementById("read-meter").onclick = readMeter;
+    document.getElementById("create-meter").onclick = createMeter;
 })();
