@@ -22,3 +22,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}

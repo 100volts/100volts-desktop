@@ -1,9 +1,14 @@
 <div class="el-meter">
   <link rel="stylesheet" href="../../global.css" />
   <link rel="stylesheet" href="style.css" />
-  <button id="create-meter" class="side-bar-button">
-    Create electric meter
-  </button>
+  <div class="buttons">
+    <button id="create-meter" class="side-bar-button">
+      Create electric meter
+    </button>
+    <button id="read-meter" class="side-bar-button">
+      Read electric meter
+    </button>
+  </div>
   <div class="meters">
     <div class="meter voltage">
       <h1 class="meterL">Voltage</h1>
@@ -51,10 +56,6 @@
     <option value="COM3">COM3</option>
   </select>
 </div>
-
-<button id="read-meter" class="side-bar-button">
-  Read electric meter
-</button>
 
 <div id="meters-container" class="meters-container"></div>
 

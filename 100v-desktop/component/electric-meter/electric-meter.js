@@ -26,6 +26,7 @@ window.hund_volts.elmeter = (function() {
 
 function displayElMeter(elMeters) {
   const dataListElement = document.getElementById('meters-container');
+  const com=document.getElementById('cars');
   elMeters.forEach(elMeter => {
       const meterDiv= document.createElement('div');
       const meterDivName= document.createElement('h1');
@@ -71,6 +72,7 @@ function displayElMeter(elMeters) {
         </div>`;
       dataListElement.appendChild(meterDivName);
       dataListElement.appendChild(meterDiv);
+      console.log('COM: '+com.value)
   });
 }
 
@@ -81,7 +83,7 @@ function displayElMeter(elMeters) {
     document.getElementsByClassName("close").onclick = modelDisplay;
 
     function readMeter() {
-      document.getElementsByClassName("currentl1").textContent = hund_volts.elmeter.currentl1;
+      document.getElementById("currentl1").textContent = hund_volts.elmeter.currentl1;
       document.getElementById("currentl2").textContent = hund_volts.elmeter.currentl2;
       document.getElementById("currentl3").textContent = hund_volts.elmeter.currentl3;
   
