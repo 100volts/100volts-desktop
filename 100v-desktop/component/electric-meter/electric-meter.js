@@ -24,11 +24,62 @@ window.hund_volts.elmeter = (function() {
     return getMeters()
 })();
 
+function displayElMeter(elMeters) {
+  const dataListElement = document.getElementById('meters');
+  elMeters.forEach(elMeter => {
+      const meterDiv= document.createElement('div');
+      meterDiv.className = 'meter';
+      meterDiv.id = elMeter.id;
+      meterDiv.innerHTML = `
+        <h1>${elMeter.name}</h1>
+        <div class="meter voltage">
+          <h1 class="meterL">Voltage</h1>
+          <div class="meterL">
+            V1: <a id="voltagell1${elMeter.id}"></a> V
+          </div>
+          <div class="meterL">
+            V2: <a id="voltagell2${elMeter.id}"></a> V
+          </div>
+          <div class="meterL">
+            V3: <a id="voltagell3${elMeter.id}"></a> V
+          </div>
+        </div>
+        <div class="current meter">
+          <h1>Current</h1>
+          <div class="meterL">
+            L1: <a class="currentl" id="currentl1${elMeter.id}"></a> A
+          </div>
+          <div class="meterL">
+            L2: <a class="currentl" id="currentl2${elMeter.id}"></a> A
+          </div>
+          <div class="meterL">
+            L3: <a class="currentl" id="currentl3${elMeter.id}"></a> A
+          </div>
+        </div>
+        <div class="active-power meter">
+          <h1>Active Power</h1>
+          <div class="meterL">
+            L1: <a id="activePowerL1${elMeter.id}"></a> kW
+          </div>
+          <div class="meterL">
+            L2: <a id="activePowerL2${elMeter.id}"></a> kW
+          </div>
+          <div class="meterL">
+            L3: <a id="activePowerL3${elMeter.id}"></a> kW
+          </div>
+        </div>`;
+      dataListElement.appendChild(meterDiv);
+  });
+}
+
 
 
 (function initElMeter() {
+    var modal = document.getElementById("myModal");
+    document.getElementsByClassName("close").onclick = modelDisplay;
+
     function readMeter() {
-      document.getElementById("currentl1").textContent = hund_volts.elmeter.currentl1;
+      document.getElementsByClassName("currentl1").textContent = hund_volts.elmeter.currentl1;
       document.getElementById("currentl2").textContent = hund_volts.elmeter.currentl2;
       document.getElementById("currentl3").textContent = hund_volts.elmeter.currentl3;
   
@@ -45,15 +96,24 @@ window.hund_volts.elmeter = (function() {
     }
 
     function createMeter(){
-      let div = document.createElement('div');
-      div.id = 'content';
-      div.innerHTML = '<p>CreateElement example</p>';
-      document.body.appendChild(div);
+      modal.style.display = "block";
+    }
 
-      alert("Metters have been created");
-      document.getElementById("output").innerText = "Metters have been created!";
+    function modelDisplay() {
+      modal.style.display = "none";
+    };
+
+    function submitForm() {
+      var name = document.getElementById("name").value;
+      var userId =
+        document.getElementById("userId").value;
+      console.log("Name: " + name);
+      console.log("ID: " + userId);
+      modal.style.display = "none"; // Close the modal after submission
+      displayElMeter([{id:userId,name:name}])
     }
 
     document.getElementById("read-meter").onclick = readMeter;
     document.getElementById("create-meter").onclick = createMeter;
+    document.getElementById("mater-create-form").onclick = submitForm;
 })();
