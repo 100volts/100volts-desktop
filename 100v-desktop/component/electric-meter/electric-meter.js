@@ -25,13 +25,14 @@ window.hund_volts.elmeter = (function() {
 })();
 
 function displayElMeter(elMeters) {
-  const dataListElement = document.getElementById('meters');
+  const dataListElement = document.getElementById('meters-container');
   elMeters.forEach(elMeter => {
       const meterDiv= document.createElement('div');
-      meterDiv.className = 'meter';
+      const meterDivName= document.createElement('h1');
+      meterDivName.innerHTML=`${elMeter.name}`
+      meterDiv.className = 'meters';
       meterDiv.id = elMeter.id;
       meterDiv.innerHTML = `
-        <h1>${elMeter.name}</h1>
         <div class="meter voltage">
           <h1 class="meterL">Voltage</h1>
           <div class="meterL">
@@ -68,6 +69,7 @@ function displayElMeter(elMeters) {
             L3: <a id="activePowerL3${elMeter.id}"></a> kW
           </div>
         </div>`;
+      dataListElement.appendChild(meterDivName);
       dataListElement.appendChild(meterDiv);
   });
 }
