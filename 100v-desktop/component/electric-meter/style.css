@@ -12,3 +12,13 @@
 .el-meter {
   height: 100vp;
 }
+
+.meters {
+  display: flex;
+  flex-direction: row;
+}
+
+.meters-container {
+  display: flex;
+  flex-direction: column;
+}
