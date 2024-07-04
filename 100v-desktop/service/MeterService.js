@@ -4,6 +4,7 @@ const client = new ModbusRTU();
 client.connectRTUBuffered("COM5", { baudRate: 9600 });
 client.setID(1);
 
+//try export defoult
 export function getMeters(){
       /*
   client.readInputRegisters(30073, 2).then((res) => {
@@ -86,4 +87,9 @@ function decodeFloatL4(registers) {
   const floatNumber = new Float32Array(new Uint32Array([combined]).buffer)[0];
 
   return floatNumber;
+}
+
+
+module.exports={
+  readModBusElMeter:getMeters
 }

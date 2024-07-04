@@ -81,10 +81,10 @@ function displayElMeter(elMeters) {
 (function initElMeter() {
     var modal = document.getElementById("myModal");
     document.getElementsByClassName("close").onclick = modelDisplay;
-
-
+    modal.style.display = "none";
 
     function readMeter() {
+      console.log("Read meters")
       allMeters.forEach(emeter=>{
         document.getElementById(`currentl1${emeter.eid}`).textContent = hund_volts.elmeter.currentl1;
         document.getElementById(`currentl2${emeter.eid}`).textContent = hund_volts.elmeter.currentl2;
@@ -98,20 +98,22 @@ function displayElMeter(elMeters) {
         document.getElementById(`activePowerL2${emeter.eid}`).textContent = hund_volts.elmeter.activePowerL2;
         document.getElementById(`activePowerL3${emeter.eid}`).textContent = hund_volts.elmeter.activePowerL3;
       });
-
       const port=document.getElementById("port")
-
-
       alert(`Metters have been read on port: ${port.value} !`);
-      document.getElementById("output").innerText = `Metters have been read on port: ${port.value}!`;
+      modal.style.display = "none";
+      console.log("All meters are read")
+      document.getElementById("userId").disabled =false;
+      document.getElementById("name").disabled=false;
     }
 
     function createMeter(){
       modal.style.display = "block";
+      console.log("registerd on click create-meter")
     }
 
     function modelDisplay() {
       modal.style.display = "none";
+      console.log("registerd on click modelDisplay")
     };
 
     function submitForm() {
@@ -120,14 +122,17 @@ function displayElMeter(elMeters) {
         document.getElementById("userId").value;
       console.log("Name: " + name);
       console.log("ID: " + userId);
-      modal.style.display = "none"; // Close the modal after submission
+      modal.style.display = "none";
       allMeters.push({ename: name, eid:userId});
       displayElMeter([{id:userId,name:name}])
       console.log(allMeters)
+      document.getElementById("name").value="";
+      document.getElementById("userId").value="";
     }
-    modal.style.display = "none";
+    
 
     document.getElementById("read-meter").onclick = readMeter;
     document.getElementById("create-meter").onclick = createMeter;
     document.getElementById("mater-create-form").onclick = submitForm;
-})();
+    console.log("Sript end");
+})(document.window);
