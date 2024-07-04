@@ -22,3 +22,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.read-meter {
+  max-height: 50%;
+}
+
+.cofiged-metter {
+  background-color: azure;
+}

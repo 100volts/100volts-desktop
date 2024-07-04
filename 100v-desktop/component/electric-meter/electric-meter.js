@@ -1,4 +1,7 @@
 window.hund_volts = window.hund_volts || {};
+window.hund_volts.com= (function(){
+  
+})  
 
 function getMeters(){
     /*
@@ -30,9 +33,10 @@ function displayElMeter(elMeters) {
       const meterDiv= document.createElement('div');
       const meterDivName= document.createElement('h1');
       meterDivName.innerHTML=`${elMeter.name} Id:${elMeter.id}`
-      meterDiv.className = 'meters';
+      meterDiv.className = 'cofiged-metter';
       meterDiv.id = elMeter.id;
       meterDiv.innerHTML = `
+      <div class="meters">
         <div class="meter voltage">
           <h1 class="meterL">Voltage</h1>
           <div class="meterL">
@@ -68,7 +72,9 @@ function displayElMeter(elMeters) {
           <div class="meterL">
             L3: <a id="activePowerL3${elMeter.id}"></a> kW
           </div>
-        </div>`;
+        </div>
+        </div>
+        `;
       dataListElement.appendChild(meterDivName);
       dataListElement.appendChild(meterDiv);
   });
