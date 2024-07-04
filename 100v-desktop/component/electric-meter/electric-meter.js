@@ -1,8 +1,5 @@
 window.hund_volts = window.hund_volts || {};
-window.hund_volts.com= (function(){
-  
-})  
-
+var allMeters= [];
 function getMeters(){
     /*
 client.readInputRegisters(30073, 2).then((res) => {
@@ -81,10 +78,11 @@ function displayElMeter(elMeters) {
 }
 
 
-
 (function initElMeter() {
     var modal = document.getElementById("myModal");
     document.getElementsByClassName("close").onclick = modelDisplay;
+
+
 
     function readMeter() {
       document.getElementsByClassName("currentl1").textContent = hund_volts.elmeter.currentl1;
@@ -98,9 +96,11 @@ function displayElMeter(elMeters) {
       document.getElementById("activePowerL1").textContent = hund_volts.elmeter.activePowerL1;
       document.getElementById("activePowerL2").textContent = hund_volts.elmeter.activePowerL2;
       document.getElementById("activePowerL3").textContent = hund_volts.elmeter.activePowerL3;
+      const port=document.getElementById("port")
 
-      alert("Metters have been read");
-      document.getElementById("output").innerText = "Metters have been read!";
+
+      alert(`Metters have been read on port: ${port.value} !`);
+      document.getElementById("output").innerText = `Metters have been read on port: ${port.value}!`;
     }
 
     function createMeter(){
@@ -118,7 +118,9 @@ function displayElMeter(elMeters) {
       console.log("Name: " + name);
       console.log("ID: " + userId);
       modal.style.display = "none"; // Close the modal after submission
+      allMeters.push({ename: name, eid:userId});
       displayElMeter([{id:userId,name:name}])
+      console.log(allMeters)
     }
     modal.style.display = "none";
 
