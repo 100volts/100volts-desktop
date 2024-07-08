@@ -26,6 +26,7 @@ window.hund_volts.elmeter = (function() {
 
 function displayElMeter(elMeters) {
   const dataListElement = document.getElementById('meters-container');
+  const com=document.getElementById('cars');
   elMeters.forEach(elMeter => {
       const meterDiv= document.createElement('div');
       const meterDivName= document.createElement('h1');
@@ -74,6 +75,7 @@ function displayElMeter(elMeters) {
         `;
       dataListElement.appendChild(meterDivName);
       dataListElement.appendChild(meterDiv);
+      console.log('COM: '+com.value)
   });
 }
 
