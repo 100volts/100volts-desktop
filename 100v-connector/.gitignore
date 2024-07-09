@@ -8,6 +8,12 @@ node_modules/
 logs/
 *.log
 
+# Excel
+ *.xlsx
+ xlsx/
+ .xlsx
+
+
 # Build artifacts
 dist/
 build/
