@@ -13,35 +13,19 @@ function getTodaysDate(){
     const today = new Date();
 
     const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0, so we add 1 to get the correct month
+    const month = String(today.getMonth() + 1).padStart(2, '0');
     const year = today.getFullYear();
 
     const formattedDate = `${day}-${month}-${year}`;
-    console.log(formattedDate); // Output: e.g., 09-07-2024
+    console.log(formattedDate);
     return formattedDate;
 }
 
 async function main() {
-  let input = await getUserInput('Enter number of meters: ');
-  
-  let number = parseInt(input);
-
-  if (isNaN(number)) {
-    console.log("Please enter a valid number.");
-    rl.close();
-    return;
-  }
-
-  const arrElMeter=[];
-
-  for (let i = 0; i < number; i++) {
-    let id = await getUserInput(`Enter el meter id: ${i + 1}: `);
-    arrElMeter.push({eid:id})
-    console.log(arrElMeter)
-  }
-
+    const arrElMeter=[]; 
+  arrElMeter.push([{eid:1},{eid:2}])
   console.log("El meter data:", arrElMeter);
-    //in for obj // of for array
+
   for(let elem of arrElMeter){
     console.log(elem.eid)
   }
