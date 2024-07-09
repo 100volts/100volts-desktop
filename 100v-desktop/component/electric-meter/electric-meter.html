@@ -1,60 +1,23 @@
 <div class="el-meter">
   <link rel="stylesheet" href="../../global.css" />
   <link rel="stylesheet" href="style.css" />
-  <div class="buttons">
-    <button id="create-meter" class="side-bar-button">
-      Create electric meter
-    </button>
-    <button id="read-meter" class="side-bar-button">
-      Read electric meter
-    </button>
+  <button id="create-meter" class="side-bar-button">
+    Create electric meter
+  </button>
+  <button id="read-meter" class="side-bar-button">
+    Read electric meter
+  </button>
+  <button id="save-meter" class="side-bar-button">
+    Save meter
+  </button>
+  <div class="posrt-serlect">
+    <select name="port" id="port">
+      <option value="COM">COM</option>
+      <option value="COM1">COM1</option>
+      <option value="COM2">COM2</option>
+      <option value="COM3">COM3</option>
+    </select>
   </div>
-  <div class="meters">
-    <div class="meter voltage">
-      <h1 class="meterL">Voltage</h1>
-      <div class="meterL">
-        V1: <a id="voltagell1"></a> V
-      </div>
-      <div class="meterL">
-        V2: <a id="voltagell2"></a> V
-      </div>
-      <div class="meterL">
-        V3: <a id="voltagell3"></a> V
-      </div>
-    </div>
-    <div class="current meter">
-      <h1>Current</h1>
-      <div class="meterL">
-        L1: <a class="currentl" id="currentl1"></a> A
-      </div>
-      <div class="meterL">
-        L2: <a class="currentl" id="currentl2"></a> A
-      </div>
-      <div class="meterL">
-        L3: <a class="currentl" id="currentl3"></a> A
-      </div>
-    </div>
-    <div class="active-power meter">
-      <h1>Active Power</h1>
-      <div class="meterL">
-        L1: <a id="activePowerL1"></a> kW
-      </div>
-      <div class="meterL">
-        L2: <a id="activePowerL2"></a> kW
-      </div>
-      <div class="meterL">
-        L3: <a id="activePowerL3"></a> kW
-      </div>
-    </div>
-  </div>
-</div>
-<div class="posrt-serlect">
-  <select name="port" id="cars">
-    <option value="COM">COM</option>
-    <option value="COM1">COM1</option>
-    <option value="COM2">COM2</option>
-    <option value="COM3">COM3</option>
-  </select>
 </div>
 
 <div id="meters-container" class="meters-container"></div>
@@ -66,17 +29,9 @@
     <span class="close">&times;</span>
     <form id="userForm">
       <label for="name">Name:</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-      /><br /><br />
+      <input type="text" id="name" /><br /><br />
       <label for="userId">ID:</label>
-      <input
-        type="text"
-        id="userId"
-        name="userId"
-      /><br /><br />
+      <input type="text" id="userId" /><br /><br />
       <button type="button" id="mater-create-form">
         Submit
       </button>

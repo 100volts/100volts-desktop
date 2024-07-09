@@ -23,7 +23,10 @@
   flex-direction: column;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
+.read-meter {
+  max-height: 50%;
+}
+
+.cofiged-metter {
+  background-color: azure;
 }
