@@ -21,13 +21,11 @@ async function main() {
   }
 
   const arrElMeter=[];
-  const elMeterData = {};
 
   for (let i = 0; i < number; i++) {
     let id = await getUserInput(`Enter el meter id: ${i + 1}: `);
     arrElMeter.push({eid:id})
     console.log(arrElMeter)
-    //elMeterData[`id`] = id;
   }
 
   console.log("El meter data:", arrElMeter);
