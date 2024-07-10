@@ -10,7 +10,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "g": "^2.0.1",
     "modbus-serial": "^8.0.17",
+    "pkg": "^5.8.1",
     "xlsx": "^0.18.5"
   }
 }
