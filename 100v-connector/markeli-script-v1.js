@@ -1,5 +1,10 @@
 const readline = require("readline");
 const http = require("http");
+//set up modbus for reading
+const ModbusRTU = require("modbus-serial");
+const client = new ModbusRTU();
+client.connectRTUBuffered("COM3", { baudRate: 9600 });
+client.setID(1);
 
 function getTodaysDate() {
   const today = new Date();
@@ -12,11 +17,6 @@ function getTodaysDate() {
   console.log(formattedDate);
   return formattedDate;
 }
-//set up modbus for reading
-const ModbusRTU = require("modbus-serial");
-const client = new ModbusRTU();
-client.connectRTUBuffered("COM3", { baudRate: 9600 });
-client.setID(1);
 
 function modbusRegistersToDouble(registers) {
   var buffer = new ArrayBuffer(8);
@@ -40,7 +40,6 @@ function decodeFloat(registers) {
 }
 
 function decodeFloatL4(registers) {
-  // Make sure we have exactly four registers
   if (registers.length !== 4) {
     throw new Error(
       "Invalid number of registers. Floating-point decoding requires exactly four 16-bit registers."
@@ -57,7 +56,7 @@ function decodeFloatL4(registers) {
   return floatNumber;
 }
 
-const metersIdList = [1, 3, 5];
+const metersIdList = [1, 2, 3, 4, 5];
 
 const getMetersValue = async (meters) => {
   var volatageMeter = [];
@@ -81,8 +80,8 @@ const getMetersValue = async (meters) => {
 const getMeterValue = async (id) => {
   try {
     await client.setID(id);
-    let val = await client.readInputRegisters(1, 2).then((res) => {
-      return decodeFloat(res.data);
+    let val = await client.readInputRegisters(801, 4).then((res) => {
+      return modbusRegistersToDouble(res.data);
     });
 
     return val;
@@ -97,7 +96,9 @@ async function main() {
   const voltageData = await getMetersValue(metersIdList);
   console.log();
 
-  const dataPrep = [["V-L1", "V-L2", "V-L3"]];
+  const dataPrep = [
+    ["GRT-1", "Ampak-2", "Ledena Voda-3", "Hladilnici-4", "Kompresorno-5"],
+  ];
   dataPrep.push(voltageData);
   console.log("Voltage Date:", voltageData);
   console.log("Array of arrays", dataPrep);
