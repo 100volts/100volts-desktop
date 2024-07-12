@@ -7,6 +7,7 @@ client.setID(1);
 
 // read the values of 10 registers starting at address 0
 // on device number 1. and log the values to the console.
+
 setInterval(function () {
   //30005 -l1
   /*
@@ -72,13 +73,11 @@ function modbusRegistersToDouble(registers) {
   var buffer = new ArrayBuffer(8);
   var view = new DataView(buffer);
 
-  // Assuming the registers are in big-endian format
   view.setUint16(0, registers[0], false); // Most significant register
   view.setUint16(2, registers[1], false);
   view.setUint16(4, registers[2], false);
   view.setUint16(6, registers[3], false); // Least significant register
 
-  // Get the double value from the buffer
   return view.getFloat64(0, false) / 1000;
 }
 
