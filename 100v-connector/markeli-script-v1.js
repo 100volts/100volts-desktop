@@ -94,17 +94,17 @@ const getMeterValue = async (id) => {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function main() {
-  const vlatageData = await getMetersValue(metersIdList);
+  const voltageData = await getMetersValue(metersIdList);
   console.log();
 
   const dataPrep = [["V-L1", "V-L2", "V-L3"]];
-  const data = dataPrep.push(vlatageData);
-  console.log("Voltage Date:", vlatageData);
-  console.log("Array of arrays", data);
+  dataPrep.push(voltageData);
+  console.log("Voltage Date:", voltageData);
+  console.log("Array of arrays", dataPrep);
 
   const XLSX = require("xlsx");
   const workbook = XLSX.utils.book_new();
-  const worksheet = XLSX.utils.aoa_to_sheet(data);
+  const worksheet = XLSX.utils.aoa_to_sheet(dataPrep);
   XLSX.utils.book_append_sheet(workbook, worksheet, getTodaysDate());
   XLSX.writeFile(workbook, "output.xlsx");
   console.log("Excel file has been created successfully.");
