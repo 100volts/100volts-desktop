@@ -1,0 +1,18 @@
+{
+  "name": "100v-connector",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "g": "^2.0.1",
+    "modbus-serial": "^8.0.17",
+    "pkg": "^5.8.1",
+    "xlsx": "^0.18.5"
+  }
+}

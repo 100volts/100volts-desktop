@@ -12,3 +12,21 @@
 .el-meter {
   height: 100vp;
 }
+
+.meters {
+  display: flex;
+  flex-direction: row;
+}
+
+.meters-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.read-meter {
+  max-height: 50%;
+}
+
+.cofiged-metter {
+  background-color: azure;
+}
