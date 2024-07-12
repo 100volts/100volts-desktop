@@ -64,9 +64,25 @@ const getMetersValue = async (meters) => {
     // get value of all meters
     for (let meter of meters) {
       await sleep(50);
-      const voltData = await getMeterValue(meter);
-      console.log(voltData);
-      volatageMeter.push(voltData);
+      const activePowerData = await getMeterValue(meter.id);
+      const len2Data = await getMeterValueLen2(meter.id);
+      volatageMeter.push({
+        name: meter.name,
+        value: activePowerData,
+        voltageL1: len2Data[0],
+        voltageL2: len2Data[1],
+        voltageL3: len2Data[2],
+        currentL1: len2Data[3],
+        currentL2: len2Data[4],
+        currentL3: len2Data[5],
+        activePowerL1: len2Data[6],
+        activePowerL2: len2Data[7],
+        activePowerL3: len2Data[8],
+        powerFactorL1: len2Data[9],
+        powerFactorL2: len2Data[10],
+        powerFactorL3: len2Data[11],
+        totActivePower: len2Data[12],
+      });
       await sleep(100);
     }
   } catch (e) {
@@ -83,29 +99,84 @@ const getMeterValue = async (id) => {
     let val = await client.readInputRegisters(801, 4).then((res) => {
       return modbusRegistersToDouble(res.data);
     });
-
     return val;
   } catch (e) {
     return -1;
   }
 };
 
+const getMeterValueLen2 = async (id) => {
+  const addresses = [1, 3, 5, 13, 15, 17, 25, 27, 29, 37, 39, 41, 65]; //all addresses for len2
+  let allFoundAddressData = [];
+  for (let address of addresses) {
+    try {
+      await client.setID(id);
+      let val = await client.readInputRegisters(address, 2).then((res) => {
+        allFoundAddressData.push(decodeFloat(res.data));
+      });
+    } catch (e) {
+      return -1;
+    }
+  }
+  console.log("Len 2 Volt data", allFoundAddressData);
+  return allFoundAddressData;
+};
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function main() {
-  const voltageData = await getMetersValue(metersIdList);
-  console.log();
-
   const dataPrep = [
-    ["GRT-1", "Ampak-2", "Ledena Voda-3", "Hladilnici-4", "Kompresorno-5"],
+    { id: 1, name: "GRT-1" },
+    { id: 2, name: "Ampak-2" },
+    { id: 3, name: "Ledena Voda-3" },
+    { id: 4, name: "Hladilnici-4" },
+    { id: 5, name: "Kompresorno-5" },
   ];
-  dataPrep.push(voltageData);
-  console.log("Voltage Date:", voltageData);
-  console.log("Array of arrays", dataPrep);
+  const header = [
+    "Meter Name",
+    "Active Energy",
+    "Voltage L1",
+    "Voltage L2",
+    "Voltage L3",
+    "Current L1",
+    "Current L2",
+    "Current L3",
+    "Active power L1",
+    "Active power L2",
+    "Active power L3",
+    "Power factor L1",
+    "Power factor L2",
+    "Power factor L3",
+    "Total active power",
+  ];
+  const totalPowerData = await getMetersValue(dataPrep);
+  console.log();
+  const names = totalPowerData.map((item) => item.name);
+  const values = totalPowerData.map((item) => item.value);
+  const combined = totalPowerData.map((item) => [
+    item.name,
+    item.value,
+    item.voltageL1,
+    item.voltageL2,
+    item.voltageL3,
+    item.currentL1,
+    item.currentL2,
+    item.currentL3,
+    item.activePowerL1,
+    item.activePowerL2,
+    item.activePowerL3,
+    item.powerFactorL1,
+    item.powerFactorL2,
+    item.powerFactorL3,
+    item.totActivePower,
+  ]);
+  combined.unshift(header);
+
+  console.log("Exel Date:", combined);
 
   const XLSX = require("xlsx");
   const workbook = XLSX.utils.book_new();
-  const worksheet = XLSX.utils.aoa_to_sheet(dataPrep);
+  const worksheet = XLSX.utils.aoa_to_sheet(combined);
   XLSX.utils.book_append_sheet(workbook, worksheet, getTodaysDate());
   XLSX.writeFile(workbook, "output.xlsx");
   console.log("Excel file has been created successfully.");
