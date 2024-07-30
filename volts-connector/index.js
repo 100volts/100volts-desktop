@@ -6,6 +6,7 @@ import gradient from 'gradient-string';
 import chalkAnimation from 'chalk-animation';
 import figlet from 'figlet';
 import { createSpinner } from 'nanospinner';
+import http from  'http';
 
 
 //global variable for key & port
@@ -58,6 +59,47 @@ async function askForPort(){
     console.log(port)
 }
 
+
+
+const postData = JSON.stringify({
+    email: "plamen@mail.com",
+    password: "12345678",
+});
+const options = {
+    hostname: "localhost",
+    port: 8081,
+    path: "/api/vi/auth/authenticate",
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(postData),
+    },
+};
+let reqdata
+async function sendPostRequest() {
+   let dataFormLogin
+    const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+        data += chunk;
+        });
+        res.on("end", () => {
+            reqdata=data
+        console.log("Response:", data);
+        });
+    });
+    req.on("error", (e) => {
+        console.error(`Problem with request: ${e.message}`);
+    });
+    req.write(postData);
+    req.end();
+    
+}
+
+async function postElMeterData(){
+    await sendPostRequest();
+}
+
 async function mainScreen(){
     console.clear();
     const msg='Working';
@@ -65,6 +107,8 @@ async function mainScreen(){
     figlet(msg,(err,data)=>{
         console.log(gradient.pastel.multiline(data))
     });
+    await postElMeterData();
+    console.log("ReqData: ", reqdata)
     await sleepALot();
     await mainScreen();
 } 
