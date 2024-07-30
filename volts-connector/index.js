@@ -6,6 +6,7 @@ import gradient from 'gradient-string';
 import chalkAnimation from 'chalk-animation';
 import figlet from 'figlet';
 import { createSpinner } from 'nanospinner';
+import http from  'http';
 
 
 //global variable for key & port
@@ -14,7 +15,7 @@ let port;
 
 //helper function
 const sleep=(ms=2000)=> new Promise((r)=> setTimeout(r,ms));
-const sleepALot=(ms=2000000000)=> new Promise((r)=> setTimeout(r,ms));
+const sleepALot=(ms=120000)=> new Promise((r)=> setTimeout(r,ms));
 
 
 async function welcome(){
@@ -58,6 +59,54 @@ async function askForPort(){
     console.log(port)
 }
 
+
+
+const postData = JSON.stringify({
+    email: "plamen@mail.com",
+    password: "12345678",
+});
+const options = {
+    hostname: "localhost",
+    port: 8081,
+    path: "/api/vi/auth/authenticate",
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(postData),
+    },
+};
+let reqdata
+async function sendPostRequest() {
+    return new Promise((resolve, reject) => {
+        const req = http.request(options, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                try {
+                    resolve(data);
+                } catch (err) {
+                    reject(err);
+                }
+            });
+        });
+
+        req.on('error', (e) => {
+            reject(`Problem with request: ${e.message}`);
+        });
+
+        req.write(postData);
+        req.end();
+    });
+}
+
+async function postElMeterData(){
+    await sendPostRequest().then(data=>reqdata=data);
+}
+
 async function mainScreen(){
     console.clear();
     const msg='Working';
@@ -65,6 +114,9 @@ async function mainScreen(){
     figlet(msg,(err,data)=>{
         console.log(gradient.pastel.multiline(data))
     });
+    await postElMeterData();
+    const jsonObject = JSON.parse(reqdata);
+    console.log("Tokken: ", jsonObject['access_token'])
     await sleepALot();
     await mainScreen();
 } 
