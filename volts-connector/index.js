@@ -77,27 +77,34 @@ const options = {
 };
 let reqdata
 async function sendPostRequest() {
-   let dataFormLogin
-    const req = http.request(options, (res) => {
-        let data = "";
-        res.on("data", (chunk) => {
-        data += chunk;
+    return new Promise((resolve, reject) => {
+        const req = http.request(options, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                try {
+                    resolve(data);
+                } catch (err) {
+                    reject(err);
+                }
+            });
         });
-        res.on("end", () => {
-            reqdata=data
-        console.log("Response:", data);
+
+        req.on('error', (e) => {
+            reject(`Problem with request: ${e.message}`);
         });
+
+        req.write(postData);
+        req.end();
     });
-    req.on("error", (e) => {
-        console.error(`Problem with request: ${e.message}`);
-    });
-    req.write(postData);
-    req.end();
-    
 }
 
 async function postElMeterData(){
-    await sendPostRequest();
+    await sendPostRequest().then(data=>reqdata=data);
 }
 
 async function mainScreen(){
@@ -108,7 +115,8 @@ async function mainScreen(){
         console.log(gradient.pastel.multiline(data))
     });
     await postElMeterData();
-    console.log("ReqData: ", reqdata)
+    const jsonObject = JSON.parse(reqdata);
+    console.log("Tokken: ", jsonObject['access_token'])
     await sleepALot();
     await mainScreen();
 } 
