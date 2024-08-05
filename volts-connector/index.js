@@ -16,9 +16,14 @@ import XLSX from "xlsx";
 let key;
 let port;
 
+const client = new ModbusRTU();
+client.connectRTUBuffered("COM3", { baudRate: 9600 });
+client.setID(1);
 //helper function
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
-const sleepALot = (ms = 120000) => new Promise((r) => setTimeout(r, ms));
+//const sleepALot = (ms = 120000) => new Promise((r) => setTimeout(r, ms));//this is 2 mins
+
+const sleepALot = (ms = 60000) => new Promise((r) => setTimeout(r, ms));
 
 async function welcome() {
   const title = chalkAnimation.neon("Volts-Connector \n");
@@ -159,10 +164,6 @@ async function mainScreen() {
 
 async function readMeters() {
   //set up modbus for reading
-
-  const client = new ModbusRTU();
-  client.connectRTUBuffered("COM3", { baudRate: 9600 });
-  client.setID(1);
 
   function getTodaysDate() {
     const today = new Date();
