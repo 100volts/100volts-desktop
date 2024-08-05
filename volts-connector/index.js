@@ -106,7 +106,6 @@ async function sendPostRequest() {
 }
 
 async function sendMerterDataRequestPost(postMeterData) {
-  console.log("post data", postMeterData);
   const meterOptions = {
     hostname: "localhost",
     port: 8081,
@@ -135,9 +134,7 @@ async function sendMerterDataRequestPost(postMeterData) {
     req.on("error", (e) => {
       reject(`Problem with request: ${e.message}`);
     });
-
     req.write(postMeterData);
-    //console.log(req);
     req.end();
   });
 }
