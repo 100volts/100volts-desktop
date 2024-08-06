@@ -66,7 +66,7 @@ const postData = JSON.stringify({
   password: "12345678",
 });
 const options = {
-  hostname: "localhost",
+  hostname: "192.168.0.102",
   port: 8081,
   path: "/api/vi/auth/authenticate",
   method: "POST",
@@ -107,7 +107,7 @@ async function sendPostRequest() {
 
 async function sendMerterDataRequestPost(postMeterData) {
   const meterOptions = {
-    hostname: "localhost",
+    hostname: "192.168.0.102",
     port: 8081,
     path: "/elmeter/data",
     method: "POST",
@@ -361,6 +361,6 @@ async function readMeters() {
 }
 
 await welcome();
-await askForKey();
-await askForPort();
+//await askForKey();
+//await askForPort();
 await mainScreen();
