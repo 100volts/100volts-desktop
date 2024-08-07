@@ -212,7 +212,7 @@ async function readMeters() {
     return floatNumber;
   }
 
-  const metersIdList = [1, 2, 3, 4, 5];
+  const metersIdList = [1, 2, 3, 4, 5,6,7];
 
   const getMetersValue = async (meters) => {
     var volatageMeter = [];
@@ -307,6 +307,9 @@ async function readMeters() {
       { id: 3, name: "Ledena Voda-3" },
       { id: 4, name: "Hladilnici-4" },
       { id: 5, name: "Kompresorno-5" },
+      { id: 6, name: "Priemno-6" },
+      { id: 7, name: "Trafo#1-7" },
+
     ];
     const header = [
       "Meter Name",
