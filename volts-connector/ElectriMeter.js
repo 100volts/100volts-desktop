@@ -1,4 +1,7 @@
 import ModbusRTU from "modbus-serial";
+import getMeterValueLen2 from "./GetMeterValueLen2.js"
+import getMeterValueLen4 from "./GetMeterValueLen4.js"
+
 
 export default class{
     constructor(
@@ -32,8 +35,9 @@ export default class{
         //TODO call setAddressName
     }
 
-    async setAddressName(address,name){
-
+    setAddressName(address,name){
+        this.address=address;
+        this.name=name;    
     }
 
     async setMeter(
@@ -67,7 +71,7 @@ export default class{
         const client = new ModbusRTU();
         client.connectRTUBuffered("COM3", { baudRate: 9600 });
         //Read
-        getMeterValue(this.address)
+        const len4Data = getMeterValue(this.address)
         const len2Data = getMeterValueLen2(this.address)
         //TODO add activePowerData
         setMeter(this.name,this.address,
@@ -101,7 +105,7 @@ export default class{
     }
 
 
-    async sendMerterDataRequestPost(postMeterData) {
+    async #sendMerterDataRequestPost(postMeterData) {
         const meterOptions = {
           hostname: "192.168.0.102",
           port: 8081,
@@ -136,6 +140,7 @@ export default class{
     }
 } 
 
+/*
 const getMeterValue = async (address) => {
     try {
       await client.setID(address);
@@ -164,3 +169,4 @@ const getMeterValueLen2 = async (address) => {
     console.log("Len 2 Volt data", allFoundAddressData);
     return allFoundAddressData;
 };
+*/
