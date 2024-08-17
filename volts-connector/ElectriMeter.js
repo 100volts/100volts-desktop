@@ -71,7 +71,7 @@ export default class{
         const client = new ModbusRTU();
         client.connectRTUBuffered("COM3", { baudRate: 9600 });
         //Read
-        const len4Data = getMeterValue(this.address)
+        const len4Data = getMeterValueLen4(this.address)
         const len2Data = getMeterValueLen2(this.address)
         //TODO add activePowerData
         setMeter(this.name,this.address,
