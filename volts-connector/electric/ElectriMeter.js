@@ -1,10 +1,10 @@
 import ModbusRTU from "modbus-serial";
-import getMeterValueLen2 from "./GetMeterValueLen2.js"
-import getMeterValueLen4 from "./GetMeterValueLen4.js"
-
+import getMeterValueLen2 from "../GetMeterValueLen2.js"
+import getMeterValueLen4 from "../GetMeterValueLen4.js"
 
 export default class{
-    constructor(
+/*
+  constructor(
     name,address,value,
     voltageL1,voltageL2,voltageL3,
     currentL1,currentL2,currentL3,
@@ -29,6 +29,7 @@ export default class{
         this.powerFactorL3=powerFactorL3;
         this.totActivePower=totActivePower;
     }
+        */
 
     getMeterByAddress(address,company){
         //TODO add api call
