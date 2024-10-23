@@ -4,6 +4,42 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-2" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="270" y="40" width="230" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9hwAWi9BYw1DEbmhTUc2-3" target="9hwAWi9BYw1DEbmhTUc2-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-3" value="LangChain4j" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="310" y="160" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9hwAWi9BYw1DEbmhTUc2-4" target="9hwAWi9BYw1DEbmhTUc2-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-4" value="Volt&lt;div&gt;AI&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="560" y="170" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="9hwAWi9BYw1DEbmhTUc2-5" target="9hwAWi9BYw1DEbmhTUc2-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-5" value="Posgre&lt;div&gt;DB&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="570" y="40" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-6" value="Ollama" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="700" y="170" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-11" value="Call only yser data" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="400" y="50" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-12" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.mscae.enterprise.filter" vertex="1" parent="1">
+          <mxGeometry x="325" y="115" width="50" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-13" value="Volts&lt;div&gt;Recommendation&amp;nbsp;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="290" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9hwAWi9BYw1DEbmhTUc2-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9hwAWi9BYw1DEbmhTUc2-11" target="9hwAWi9BYw1DEbmhTUc2-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
