@@ -19,6 +19,7 @@
     "inquirer": "^10.1.4",
     "modbus-serial": "^8.0.17",
     "nanospinner": "^1.1.0",
+    "volts-connector": "file:",
     "xlsx": "^0.18.5"
   }
 }
