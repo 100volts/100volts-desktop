@@ -82,7 +82,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.navigation.compose)
     debugImplementation(compose.uiTooling)
+
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 }
 
 compose.desktop {

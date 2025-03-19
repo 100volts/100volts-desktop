@@ -1,4 +1,5 @@
 package com.volts.multiplatform
+import androidx.navigation.compose.rememberNavController
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -26,6 +27,7 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ){
+            val navController = rememberNavController()
             Text(text="Hello world")
         }
     }
