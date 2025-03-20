@@ -46,10 +46,13 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.8.0-alpha10")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.oshi.core)
         }
     }
 }
@@ -82,10 +85,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.navigation.compose)
     debugImplementation(compose.uiTooling)
-
-    implementation("androidx.navigation:navigation-compose:2.7.7")
 }
 
 compose.desktop {
